@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| ONE TO MANY RELATIONSIP
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/create', function(){
+
+    $user = User::findOrFail(1);
+    // $post = new Post(['title'=>'This is one to many relationship title', 'body'=>'Body of the one to many relationship just awesome']);
+    $user->posts()->save(new Post(['title'=>'This is one to many relationship title', 'body'=>'Body of the one to many relationship just awesome']));
+
 });
