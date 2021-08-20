@@ -30,6 +30,15 @@ Route::get('/create', function(){
 
     $user = User::findOrFail(1);
     // $post = new Post(['title'=>'This is one to many relationship title', 'body'=>'Body of the one to many relationship just awesome']);
-    $user->posts()->save(new Post(['title'=>'This is one to many relationship title', 'body'=>'Body of the one to many relationship just awesome']));
+    $user->posts()->save(new Post(['title'=>'This is one to many relationship title 22', 'body'=>'Body of the one to many relationship just awesome 22']));
+
+});
+
+Route::get('/read', function(){
+
+    $user = User::findOrFail(1);
+    foreach($user->posts as $post){
+        echo $post->title . "<br>";
+    }
 
 });
